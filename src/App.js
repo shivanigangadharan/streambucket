@@ -1,41 +1,31 @@
 import "./App.css";
-import logo from "./logo.png";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from "./pages/homepage/homepage";
+import Watchlater from "./pages/watchlater/watchlater";
+import Videolisting from "./pages/videolisting/videolisting";
+import Login from "./pages/login/login";
+import Signup from "./pages/login/signup";
+import Videopage from "./pages/videopage/videopage";
+import Playlists from "./pages/playlists/playlists";
+import History from "./pages/history/history";
+import Navbar from "./components/navbar/navbar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/videolisting" element={<Videolisting />} />
+          <Route path="/watchlater" element={<Watchlater />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/videopage" element={<Videopage />} />
+          <Route path="/playlists" element={<Playlists />} />
+          <Route path="/history" element={<History />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
