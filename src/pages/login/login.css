@@ -11,12 +11,19 @@
     background: var(--white);
     padding: 1.5rem 2rem;
     box-shadow: 1px 1px 40px 0.1px var(--lightgrey);
-    width: clamp(300px, 40vw, 450px);
+    width: clamp(300px, 40vw, 600px);
 }
 .heading{
     text-align: center;
     font-weight: 800;
     font-size: 1.25rem;
+}
+.input-container{
+    text-align: left;
+    display: flex;
+}
+.label{
+    width: fit-content;
 }
 .text-input{
     border: 1px solid var(--lightgrey);

@@ -10,14 +10,15 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [encodedToken, setEncodedToken] = useState();
 
-    const SignupUser = async (email, password) => {
+    const SignupUser = async (firstName, lastName, email, password) => {
         try {
             const res = await axios.post(`/api/auth/signup`, {
-                firstName: "Shivani",
-                lastName: "Gangadharan",
-                email: "shivani@gmail.com",
-                password: "shivani123",
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
             });
+            console.log(res);
             setUser(res.data.createdUser);
             setEncodedToken(res.data.encodedToken);
             return user;
@@ -30,10 +31,10 @@ export const AuthProvider = ({ children }) => {
     const LoginUser = async (email, password) => {
         try {
             const res = await axios.post(`/api/auth/login`, {
-                email: "shivani@gmail.com",
-                password: "shivani123",
+                email: email,
+                password: password
             });
-            console.log(res)
+            console.log(res, user);
             setUser(res.data.foundUser);
             setEncodedToken(res.data.encodedToken);
             return true;

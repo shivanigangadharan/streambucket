@@ -7,6 +7,8 @@ export default function Signup() {
     const navigate = useNavigate();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
     const [checkTerms, setCheckTerms] = useState(false);
     const { SignupUser } = useAuth();
     const toggleCheck = (e) => {
@@ -19,9 +21,8 @@ export default function Signup() {
         }
         else {
             if (checkTerms) {
-                if (SignupUser(email, password) != null) {
+                if (SignupUser(firstName, lastName, email, password) != null) {
                     navigate("/");
-
                 }
             } else {
                 alert("Please accept terms and conditions.");
@@ -36,12 +37,22 @@ export default function Signup() {
                 <div className="container-login">
                     <h2 className="heading">Sign up</h2>
                     <form>
-                        <div>
+                        <div className="input-container">
+                            <label className="label">First name</label>
+                            <br />
+                            <input required onChange={e => setFirstName(e.target.value)} className="text-input" type="text" placeholder="Enter first name" />
+                        </div>
+                        <div className="input-container">
+                            <label className="label">Last name</label>
+                            <br />
+                            <input required onChange={e => setLastName(e.target.value)} className="text-input" type="text" placeholder="Enter last name" />
+                        </div>
+                        <div className="input-container">
                             <label className="label">Email address</label>
                             <br />
                             <input required onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="adarshbalika@gmail.com" />
                         </div>
-                        <div>
+                        <div className="input-container">
                             <label className="label">Password</label>
                             <br />
                             <input required onChange={e => setPassword(e.target.value)} className="text-input" type="password" placeholder="***********" />
