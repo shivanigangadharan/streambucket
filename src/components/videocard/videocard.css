@@ -12,10 +12,6 @@
     flex-direction: column;
     gap: 5px;
 }
-.title{
-    font-weight: 700;
-    margin: 0px;
-}
 .artist{
     color: var(--darkgrey);
 }
