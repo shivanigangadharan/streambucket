@@ -42,7 +42,7 @@ export default function Navbar() {
                         </i>
                     </Link>
                     <Link to="/playlists">
-                        <i className="fa-solid fa-list-music"></i>
+                        <i class="fa-regular fa-rectangle-list"></i>
                     </Link>
                 </div>
             </div>
