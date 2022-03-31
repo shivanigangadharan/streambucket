@@ -1,9 +1,19 @@
 import React from 'react';
+import '../videolisting/videolisting.css';
+import Videocard from '../../components/videocard/videocard';
 
 export default function Watchlater() {
+    const arr = [1, 2, 3, 4];
     return (
-        <div>
-            <h1> Watchlater </h1>
+        <div className="videolisting-container">
+            <h1 className="bold"> Watch later </h1>
+            <div className="video-grid">
+                {
+                    arr.map((e) => {
+                        return <Videocard />
+                    })
+                }
+            </div>
         </div>
     )
 }
