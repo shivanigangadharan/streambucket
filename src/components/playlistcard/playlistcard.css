@@ -1,0 +1,29 @@
+.playlist-card{
+    width: 250px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.playlist-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.delete-icon{
+    width: 20px;
+    height: 20px;
+    border-radius: var(--rounded);
+    background: var(--lightgrey);
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    text-align: center;
+}
+.delete-icon:hover{
+    background: var(--grey);
+    transition-duration: 0.2s;
+    cursor: pointer;
+    color: var(--white);
+}

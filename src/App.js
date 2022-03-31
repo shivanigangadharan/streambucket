@@ -9,6 +9,7 @@ import Videopage from "./pages/videopage/videopage";
 import Playlists from "./pages/playlists/playlists";
 import History from "./pages/history/history";
 import Navbar from "./components/navbar/navbar";
+import Playlistpage from "./pages/playlistpage/playlistpage";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path="/videopage" element={<Videopage />} />
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/history" element={<History />} />
+          <Route path="/playlistpage" element={<Playlistpage />} />
+
         </Routes>
       </Router>
     </div>
