@@ -1,0 +1,12 @@
+.history-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.clear-history{
+    background: var(--red);
+    color: var(--white);
+}
+.clear-history:hover{
+    filter: brightness(1.1);
+}
