@@ -1,0 +1,33 @@
+.homepage-container{
+    padding: 6.25rem;
+
+}
+.banner{
+    background-image: url("https://images.unsplash.com/photo-1526289034009-0240ddb68ce3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.banner-title{
+    color: var(--white);
+    font-size: 5rem;
+    font-weight: 900;
+}
+.banner-subtext{
+    color: var(--lightgrey);
+    font-size: 1.3rem;
+}
+.start{
+    background: var(--red);
+    color: var(--white);
+    padding: 1rem;
+    font-weight: 600;
+    width: max-content;
+}
+.start:hover{
+    filter: brightness(1.1);
+}
