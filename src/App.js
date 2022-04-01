@@ -9,12 +9,13 @@ import Videopage from "./pages/videopage/videopage";
 import Playlists from "./pages/playlists/playlists";
 import History from "./pages/history/history";
 import Navbar from "./components/navbar/navbar";
+import Mockman from 'mockman-js';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/videolisting" element={<Videolisting />} />
@@ -24,6 +25,8 @@ function App() {
           <Route path="/videopage" element={<Videopage />} />
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/history" element={<History />} />
+          <Route path="/mockman" element={<Mockman />} />
+
         </Routes>
       </Router>
     </div>
