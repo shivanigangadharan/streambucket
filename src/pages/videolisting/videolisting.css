@@ -1,0 +1,12 @@
+.videolisting-container{
+    padding: 100px;
+}
+.title{
+    font-weight: 700;
+}
+.video-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-row-gap: 25px;
+    grid-column-gap: 10px;
+}
