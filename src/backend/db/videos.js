@@ -38,4 +38,15 @@ export const videos = [
     link: "https://www.youtube.com/watch?v=V-Z0L3c3mH0",
     uploaded: "May 25, 2021",
   },
+  {
+    _id: "D_Tkoijh4wA",
+    title: "Cheap Thrills - Sitar Cover",
+    artist: "LiveToSeek",
+    description:
+      "For all those people who danced or wanted to dance even for once in their lifetimes, this is a small effort to cover up one of the most popular songs of this generation that activated the dancing feet of everyone who listened...",
+    imgUrl: "https://images.unsplash.com/photo-1646765495885-8a61595cb9cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    views: 13426,
+    link: "https://www.youtube.com/watch?v=ccPmI9J6QqM",
+    uploaded: "May 5, 2020",
+  },
 ];
