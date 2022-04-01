@@ -1,0 +1,33 @@
+.card-container{
+    width: 18.75rem;
+    background: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.card-img{
+    width: 18.75rem;
+}
+.card-content{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.video-title{
+    font-weight: 700;
+    margin: 0px;
+}
+.artist{
+    color: var(--darkgrey);
+}
+.details{
+    color: var(--grey);
+}
+.watch-now{
+    width: 100%;
+    color: var(--darkgrey);
+    font-weight: 600;
+}
+.watch-now:hover{
+    background: var(--lightgrey);
+    transition-duration: 0.2s;
+}
