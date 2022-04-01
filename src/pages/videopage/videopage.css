@@ -1,0 +1,31 @@
+.videopage-container{
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+}
+.video-container{
+    padding-right: 50px;
+}
+.video-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+.vid-section{
+    display: flex;
+    justify-content: space-between;
+    width: 956px;
+}
+.controllers{
+    display: flex;
+    gap: 15px;
+}
+.vidpage-icon{
+    margin: 5px;
+}
+.must-watch{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
