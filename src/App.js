@@ -23,7 +23,7 @@ function App() {
           <Route path="/watchlater" element={<Watchlater />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/videopage" element={<Videopage />} />
+          <Route path="/videopage/:_id" element={<Videopage />} />
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/history" element={<History />} />
           <Route path="/playlistpage" element={<Playlistpage />} />

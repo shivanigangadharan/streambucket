@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './videopage.css';
 import Videocard from '../../components/videocard/videocard';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Videopage() {
+    const { _id } = useParams();
+    const [video, setVideo] = useState({});
+    const [videos, setVideos] = useState([]);
+    useEffect(async () => {
+        const res = await axios.get("/api/videos");
+        setVideos(res.data.videos);
+        res.data.videos.find((e) => {
+            if (e._id === _id) {
+                setVideo(e);
+            }
+        })
+    }, [video])
     return (
         <div className="videopage-container">
             <div className="video-container">
-                <iframe width="956" height="538" src="https://www.youtube.com/embed/V-Z0L3c3mH0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div className="video-title"> De Mauka Zindagi Instrumental cover </div>
+                <iframe width="956" height="538" src={`https://www.youtube.com/embed/${_id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <div className="video-title"> {video.title} </div>
                 <div className="vid-section">
                     <div>
-                        <div className="artist"> Melody Cocktails </div>
-                        <div className="details"> 3,400 views | 4 months ago </div>
+                        <div className="artist"> {video.artist} </div>
+                        <div className="details"> {video.views} views | {video.uploaded} </div>
                     </div>
                     <div className="controllers">
                         <div>
@@ -27,14 +41,17 @@ export default function Videopage() {
                 </div>
                 <hr />
                 <h4> Description </h4>
-                <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae tellus suscipit, bibendum risus sit amet, consectetur magna. Phasellus ut ligula venenatis, tincidunt mi ac, tempor diam. Sed vel imperdiet justo, non vehicula erat. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.  </span>
+                <span> {video.description} </span>
             </div>
             <div className="must-watch">
                 <h1 className="video-title"> Must watch </h1>
-                <Videocard />
-                <Videocard />
-                <Videocard />
-
+                {
+                    videos.map((video, index) => {
+                        if (index < 4) {
+                            return <Videocard video={video} key={video._id} />
+                        }
+                    })
+                }
             </div>
         </div >
     )

@@ -3,6 +3,7 @@ import './videocard.css';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Videocard({ video }) {
     const { user, setUser, encodedToken } = useAuth();
@@ -65,7 +66,9 @@ export default function Videocard({ video }) {
                     <i className="watchlater-icon fa-solid fa-clock"></i>
                 }
             </div>
-            <button className="btn watch-now"> Watch now </button>
+            <Link to={`/videopage/${_id}`}>
+                <button className="btn watch-now"> Watch now </button>
+            </Link>
         </div>
     )
 }
