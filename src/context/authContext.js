@@ -8,7 +8,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    const [encodedToken, setEncodedToken] = useState();
+    const [encodedToken, setEncodedToken] = useState(localStorage.getItem("token"));
 
     const SignupUser = async (firstName, lastName, email, password) => {
         try {
@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
             console.log(res);
             setUser(res.data.createdUser);
             setEncodedToken(res.data.encodedToken);
+            localStorage.setItem("token", JSON.stringify(res.data.encodedToken));
             return user;
         }
         catch (e) {
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
             console.log(res, user);
             setUser(res.data.foundUser);
             setEncodedToken(res.data.encodedToken);
+            localStorage.setItem("token", JSON.stringify(res.data.encodedToken));
             return true;
         }
         catch (e) {

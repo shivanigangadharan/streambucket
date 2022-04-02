@@ -2,9 +2,14 @@
     width: 18.75rem;
     background: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
 }
 .card-img{
     width: 18.75rem;
+    height: 200px;
 }
 .card-content{
     padding: 10px;
@@ -26,4 +31,15 @@
 .watch-now:hover{
     background: var(--lightgrey);
     transition-duration: 0.2s;
+}
+.watchlater-icon{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--lightgrey);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.watchlater-icon:hover{
+    filter: brightness(1.5);
 }
