@@ -1,14 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './videocard.css';
+import axios from 'axios';
+import { useAuth } from '../../context/authContext';
+import { useNavigate } from 'react-router';
 
-export default function Videocard() {
+export default function Videocard({ video }) {
+    const { user, setUser, encodedToken } = useAuth();
+    const { title, artist, link, views, uploaded, imgUrl, _id } = video;
+    const [watchlater, setWatchlater] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (user && user.watchlater.length > 0) {
+            user.watchlater.map((vid) => {
+                if (vid._id === _id) {
+                    setWatchlater(true);
+                }
+            })
+        }
+    })
+    const addToWatchLater = async () => {
+        const res = await axios.post("/api/user/watchlater", { video }, {
+            headers: {
+                authorization: encodedToken
+            }
+        });
+        setUser({ ...user, watchlater: res.data.watchlater });
+        setWatchlater(true);
+    }
+    const removeFromWatchLater = async () => {
+        const res = await axios.delete(`/api/user/watchlater/${_id}`, {
+            headers: {
+                authorization: encodedToken
+            }
+        })
+        setUser({ ...user, watchlater: res.data.watchlater });
+        setWatchlater(false);
+    }
+    const handleAddToWatchLater = async () => {
+        if (user) {
+            console.log(user.watchlater);
+            if (user.watchlater.some(vid => vid._id === _id)) {
+                removeFromWatchLater();
+            }
+            else {
+                addToWatchLater();
+            }
+        }
+        else {
+            alert("Please log in to add this video to watch later.");
+            navigate("/login");
+        }
+    }
     return (
         <div className="card-container">
-            <img className="card-img" src="https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" />
+            <img className="card-img" src={imgUrl} />
             <div className="card-content">
-                <h3 className="bold"> Beethoven - Moonlight Sonata  </h3>
-                <div className="artist"> Melody Cocktails </div>
-                <div className="details"> 6k views | 4 hours ago</div>
+                <span className="bold"> {title}  </span>
+                <div className="artist"> {artist} </div>
+                <div className="details"> {views} views | {uploaded}</div>
+            </div>
+            <div onClick={handleAddToWatchLater}>
+                {watchlater ?
+                    <i className="watchlater-icon fa-solid fa-circle-check"></i> :
+                    <i className="watchlater-icon fa-solid fa-clock"></i>
+                }
             </div>
             <button className="btn watch-now"> Watch now </button>
         </div>

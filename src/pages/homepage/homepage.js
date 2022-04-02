@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './homepage.css';
 import Videocard from '../../components/videocard/videocard';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Homepage() {
+    const [videos, setVideos] = useState([]);
+    useEffect(async () => {
+        const res = await axios.get("/api/videos");
+        console.log(res);
+        setVideos(res.data.videos);
+    }, [])
     return (
         <div className="homepage-container">
             <div className="banner">
@@ -17,9 +24,13 @@ export default function Homepage() {
             <h3 className="bold"> Must watch videos  </h3>
 
             <div className="video-grid">
-                <Videocard /><Videocard /><Videocard />
-                <Videocard />
-
+                {
+                    videos.map((video, index) => {
+                        if (index < 4) {
+                            return <Videocard video={video} key={video._id} />
+                        }
+                    })
+                }
             </div>
 
         </div>

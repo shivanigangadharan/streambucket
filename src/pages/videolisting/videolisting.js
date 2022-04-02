@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './videolisting.css';
 import Videocard from '../../components/videocard/videocard';
+import axios from 'axios';
 
 export default function Videolisting() {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    const [videos, setVideos] = useState([]);
+    useEffect(async () => {
+        const res = await axios.get("/api/videos");
+        console.log(res);
+        setVideos(res.data.videos);
+    }, [])
     return (
         <div className="videolisting-container">
             <h1 className="bold"> Trending videos </h1>
             <div className="video-grid">
                 {
-                    arr.map((e) => {
-                        return <Videocard />
+                    videos.map((video) => {
+                        return <Videocard video={video} key={video._id} />
                     })
                 }
             </div>
