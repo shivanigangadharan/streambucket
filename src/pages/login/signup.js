@@ -21,7 +21,7 @@ export default function Signup() {
         }
         else {
             if (checkTerms) {
-                if (SignupUser(firstName, lastName, email, password) != null) {
+                if (SignupUser(firstName, lastName, email, password) !== null) {
                     navigate("/");
                 }
             } else {
