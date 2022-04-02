@@ -38,7 +38,6 @@ export default function Videocard({ video }) {
     }
     const handleAddToWatchLater = async () => {
         if (user) {
-            console.log(user.watchlater);
             if (user.watchlater.some(vid => vid._id === _id)) {
                 removeFromWatchLater();
             }
