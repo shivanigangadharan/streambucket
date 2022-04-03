@@ -7,7 +7,6 @@ export default function Videolisting() {
     const [videos, setVideos] = useState([]);
     useEffect(async () => {
         const res = await axios.get("/api/videos");
-        console.log(res);
         setVideos(res.data.videos);
     }, [])
     return (

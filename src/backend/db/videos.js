@@ -5,7 +5,7 @@
 
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
+    _id: "rAIpnU3J7Co",
     title: "Filhal guitar cover",
     description:
       "Hey everyone! This is my fingerstyle cover of the song Filhall by B Praak. Try using headphones and please let me know in the comments if you liked it.",
@@ -16,7 +16,7 @@ export const videos = [
     uploaded: "Feb 12, 2022",
   },
   {
-    _id: "F_Riqjdh2oM",
+    _id: "HumZR7NaiFI",
     title: "Tum Mile ( Piano cover )",
     artist: "Krishmish",
     description:
@@ -28,7 +28,7 @@ export const videos = [
 
   },
   {
-    _id: "Q_Tjsdgy4wA",
+    _id: "V-Z0L3c3mH0",
     title: "De Mauka Zindagi | Instrumental cover",
     artist: "Melody Cocktails",
     description:
@@ -39,7 +39,7 @@ export const videos = [
     uploaded: "May 25, 2021",
   },
   {
-    _id: "D_Tkoijh4wA",
+    _id: "ccPmI9J6QqM",
     title: "Cheap Thrills - Sitar Cover",
     artist: "LiveToSeek",
     description:
