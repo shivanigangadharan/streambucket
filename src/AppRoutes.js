@@ -22,7 +22,7 @@ export default function AppRoutes() {
             <Route path="/videopage/:_id" element={<Videopage />} />
             <Route path="/playlists" element={<Playlists />} />
             <Route path="/history" element={<History />} />
-            <Route path="/playlistpage" element={<Playlistpage />} />
+            <Route path="/playlistpage/:_id" element={<Playlistpage />} />
             <Route path="/mockman" element={<Mockman />} />
         </Routes>
     )

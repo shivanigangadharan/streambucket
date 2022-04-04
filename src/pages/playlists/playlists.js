@@ -7,6 +7,7 @@ import { useAuth } from '../../context/authContext';
 import axios from 'axios';
 import { useStateContext } from '../../context/stateContext';
 import CreatePlaylist from '../../components/createPlaylist/createPlaylist';
+import { Link } from 'react-router-dom';
 
 export default function Playlists() {
     const [playlistsArr, setPlaylistsArr] = useState([]);
@@ -39,15 +40,23 @@ export default function Playlists() {
             <div className="history-title">
                 <h1 className="bold"> My Playlists </h1>
                 <div>
-                    <button className="btn clear-history" id="openmodal" onClick={() => dispatch({ type: "SHOW_MODAL" })}>Create playlist</button>
+                    <button className="btn clear-history" onClick={() => dispatch({ type: "SHOW_MODAL" })}>Create playlist</button>
                     <div hidden={!state.showModal}>
                         <CreatePlaylist />
                     </div>
                 </div>
             </div>
+
             <div className="video-grid">
+
                 {state.playlists.map((item) => {
-                    return <PlaylistCard playlist={item} key={item._id} />
+                    return (
+                        <div key={item._id}>
+                            <Link to={`/playlistpage/${item._id}`} >
+                                <PlaylistCard playlist={item} />
+                            </Link>
+                        </div>
+                    )
                 })}
             </div>
         </div>

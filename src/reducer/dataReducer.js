@@ -5,6 +5,8 @@ export const dataReducer = (state, action) => {
             return { ...state, playlists: action.payload }
         case "DELETE_PLAYLIST":
             return { ...state, playlists: action.payload }
+        case "ADD_TO_PLAYLIST":
+            return { ...state, playlists: action.payload }
         case "SHOW_MODAL":
             return { ...state, showModal: true }
         case "HIDE_MODAL":

@@ -1,13 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './videopage.css';
 import Videocard from '../../components/videocard/videocard';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useStateContext } from '../../context/stateContext';
+import { useAuth } from '../../context/authContext';
+import CreatePlaylist from '../../components/createPlaylist/createPlaylist';
 
 export default function Videopage() {
     const { _id } = useParams();
     const [video, setVideo] = useState({});
     const [videos, setVideos] = useState([]);
+    const [showAddTo, setShowAddTo] = useState(false);
+    const { state, dispatch } = useStateContext();
+    const { user, encodedToken } = useAuth();
+    const navigate = useNavigate();
+
+    const toggleShowAdd = () => {
+        if (user) {
+            setShowAddTo(showAddTo ? false : true);
+        } else {
+            alert("Please login to add to playlist.");
+            navigate("/login");
+        }
+    }
+    const handleCreatePlaylist = () => {
+        dispatch({ type: "SHOW_MODAL" });
+        navigate("/playlists");
+    }
     useEffect(async () => {
         const res = await axios.get("/api/videos");
         setVideos(res.data.videos);
@@ -17,6 +37,35 @@ export default function Videopage() {
             }
         })
     }, [video])
+    const addToPlaylist = async (e) => {
+        const playlistid = e;
+        const res = await axios.post(`/api/user/playlists/${playlistid}`, { video }, {
+            headers: {
+                authorization: encodedToken
+            }
+        })
+        console.log(res);
+
+        const pl = state.playlists.filter(playlist => playlist._id === res.data.playlist._id);
+        //this is the playlist (from state) in which vid needs to be added
+
+        let plLISTS = [];
+
+        if (pl[0].videos.some(vid => vid._id === _id)) {
+            console.log("Video is already in this playlist.");
+        } else {
+            state.playlists.map((e) => {
+                if (e._id === playlistid) {
+                    plLISTS.push(res.data.playlist)
+                } else {
+                    plLISTS.push(e);
+                }
+            })
+        }
+        console.log("plLIST: ", plLISTS);
+        dispatch({ type: "ADD_TO_PLAYLIST", payload: plLISTS });
+
+    }
     return (
         <div className="videopage-container">
             <div className="video-container">
@@ -30,13 +79,27 @@ export default function Videopage() {
                     <div className="controllers">
                         <div>
                             <i className="vidpage-icon fa-regular fa-thumbs-up"></i>Like
-                    </div>
+                        </div>
                         <div>
                             <i className="vidpage-icon fa-regular fa-clock"></i> Add to watch later
-                    </div>
-                        <div>
+                        </div>
+                        <div onClick={toggleShowAdd} className="add-to-playlist">
                             <i className="vidpage-icon fa-regular fa-square-plus"></i>Add to playlist
-                    </div>
+                            <div className="add-to-options" hidden={!showAddTo}>
+
+                                {
+                                    state.playlists.map(e => {
+                                        return (
+                                            <div className="pl-option" onClick={() => addToPlaylist(e._id)}>{e.title} </div>
+                                        )
+                                    })
+                                }
+                                <hr />
+                                <div className="pl-option" onClick={handleCreatePlaylist}>Create new playlist
+                                    </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr />

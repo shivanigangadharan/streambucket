@@ -3,11 +3,13 @@ import './playlistcard.css';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
 import { useStateContext } from '../../context/stateContext';
+import { useNavigate } from 'react-router';
 
 export default function PlaylistCard({ playlist }) {
     const { title, description, videos, _id } = playlist;
     const { encodedToken } = useAuth();
     const { dispatch } = useStateContext();
+    const navigate = useNavigate();
 
     const deletePlaylist = async () => {
         try {
@@ -16,7 +18,8 @@ export default function PlaylistCard({ playlist }) {
                     authorization: encodedToken
                 }
             })
-            dispatch({ type: "DELETE_PLAYLIST", payload: res.data.playlists })
+            dispatch({ type: "DELETE_PLAYLIST", payload: res.data.playlists });
+            navigate("/playlists");
         } catch (e) {
             console.log(e);
         }
