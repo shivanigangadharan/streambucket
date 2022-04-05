@@ -1,22 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../videolisting/videolisting.css';
 import '../history/history.css';
 import PlaylistCard from '../../components/playlistcard/playlistcard';
+import { useNavigate } from 'react-router';
+import { useAuth } from '../../context/authContext';
+import axios from 'axios';
+import { useStateContext } from '../../context/stateContext';
+import CreatePlaylist from '../../components/createPlaylist/createPlaylist';
+import { Link } from 'react-router-dom';
 
 export default function Playlists() {
+    const [playlistsArr, setPlaylistsArr] = useState([]);
+
+    const { state, dispatch } = useStateContext();
+    const { user, encodedToken } = useAuth();
+
+    const navigate = useNavigate();
+
+    useEffect(async () => {
+        if (user) {
+            const res = await axios.get("/api/user/playlists", {
+                headers: {
+                    authorization: encodedToken
+                }
+            })
+            setPlaylistsArr(res.data.playlists);
+        }
+        else {
+            alert("Please login to view watchlater.");
+            navigate("/login");
+        }
+
+    }, [playlistsArr])
+
+
+
     return (
         <div className="videolisting-container">
             <div className="history-title">
                 <h1 className="bold"> My Playlists </h1>
                 <div>
-                    <button className="btn clear-history"> Create new playlist </button>
+                    <button className="btn clear-history" onClick={() => dispatch({ type: "SHOW_MODAL" })}>Create playlist</button>
+                    <div hidden={!state.showModal}>
+                        <CreatePlaylist />
+                    </div>
                 </div>
             </div>
+
             <div className="video-grid">
-                <PlaylistCard />
-                <PlaylistCard />
-                <PlaylistCard />
-                <PlaylistCard />
+
+                {state.playlists.map((item) => {
+                    return (
+                        <div key={item._id}>
+                            <Link to={`/playlistpage/${item._id}`} >
+                                <PlaylistCard playlist={item} />
+                            </Link>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )
