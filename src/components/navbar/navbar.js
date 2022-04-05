@@ -42,7 +42,10 @@ export default function Navbar() {
                         </i>
                     </Link>
                     <Link to="/playlists">
-                        <i className="fa-regular fa-rectangle-list"></i>
+                        <i className="nav-icon fa-regular fa-rectangle-list"></i>
+                    </Link>
+                    <Link to="/history">
+                        <i className="nav-icon fa-solid fa-clock-rotate-left"></i>
                     </Link>
                 </div>
             </div>

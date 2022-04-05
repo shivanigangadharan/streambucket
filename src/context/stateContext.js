@@ -5,6 +5,7 @@ const initialState = {
     playlists: [],
     likes: [],
     watchLater: [],
+    history: [],
     showModal: false
 }
 

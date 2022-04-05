@@ -4,11 +4,13 @@ import axios from 'axios';
 import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { useStateContext } from '../../context/stateContext';
 
 export default function Videocard({ video }) {
     const { user, setUser, encodedToken } = useAuth();
     const { title, artist, link, views, uploaded, imgUrl, _id } = video;
     const [watchlater, setWatchlater] = useState(false);
+    const { dispatch } = useStateContext();
     const navigate = useNavigate();
     useEffect(() => {
         if (user && user.watchlater.length > 0) {
@@ -51,6 +53,16 @@ export default function Videocard({ video }) {
             navigate("/login");
         }
     }
+    const addToHistory = async () => {
+        if (user) {
+            const res = await axios.post("/api/user/history", { video }, {
+                headers: {
+                    authorization: encodedToken
+                }
+            });
+            dispatch({ type: "ADD_TO_HISTORY", payload: res.data.history });
+        }
+    }
     return (
         <div className="card-container">
             <img className="card-img" src={imgUrl} />
@@ -66,7 +78,7 @@ export default function Videocard({ video }) {
                 }
             </div>
             <Link to={`/videopage/${_id}`}>
-                <button className="btn watch-now"> Watch now </button>
+                <button className="btn watch-now" onClick={addToHistory}> Watch now </button>
             </Link>
         </div>
     )
