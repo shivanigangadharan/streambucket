@@ -13,6 +13,8 @@ export const dataReducer = (state, action) => {
             return { ...state, history: action.payload }
         case "CLEAR_HISTORY":
             return { ...state, history: action.payload }
+        case "ADD_TO_LIKES":
+            return { ...state, likes: action.payload }
         case "SHOW_MODAL":
             return { ...state, showModal: true }
         case "HIDE_MODAL":

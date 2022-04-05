@@ -63,7 +63,14 @@ export default function Videopage() {
             })
         }
         dispatch({ type: "ADD_TO_PLAYLIST", payload: plLISTS });
-
+    }
+    const addToLikes = async () => {
+        const res = await axios.post("/api/user/likes", { video }, {
+            headers: {
+                authorization: encodedToken
+            }
+        })
+        dispatch({ type: "ADD_TO_LIKES", payload: res.data.likes });
     }
     return (
         <div className="videopage-container">
@@ -76,7 +83,7 @@ export default function Videopage() {
                         <div className="details"> {video.views} views | {video.uploaded} </div>
                     </div>
                     <div className="controllers">
-                        <div>
+                        <div onClick={addToLikes}>
                             <i className="vidpage-icon fa-regular fa-thumbs-up"></i>Like
                         </div>
                         <div>
