@@ -62,7 +62,6 @@ export default function Videopage() {
                 }
             })
         }
-        console.log("plLIST: ", plLISTS);
         dispatch({ type: "ADD_TO_PLAYLIST", payload: plLISTS });
 
     }

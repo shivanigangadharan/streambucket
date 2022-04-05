@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
                 email: email,
                 password: password,
             });
-            console.log("Signed up: ", res);
             setUser(res.data.createdUser);
             setEncodedToken(res.data.encodedToken);
             localStorage.setItem("token", JSON.stringify(res.data.encodedToken));
@@ -35,7 +34,6 @@ export const AuthProvider = ({ children }) => {
                 email: email,
                 password: password
             });
-            console.log(res, user);
             setUser(res.data.foundUser);
             setEncodedToken(res.data.encodedToken);
             localStorage.setItem("token", JSON.stringify(res.data.encodedToken));

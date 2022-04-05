@@ -13,7 +13,6 @@ export default function Playlistpage() {
     const [videos, setVideos] = useState([]);
     const [playlistName, setPlaylistName] = useState();
     const { _id } = useParams();
-    console.log(state);
     useEffect(() => {
         state.playlists.map(e => {
             if (e._id === _id) {
@@ -28,7 +27,6 @@ export default function Playlistpage() {
                 authorization: encodedToken
             }
         })
-        console.log(res);
         const pl = state.playlists.filter(playlist => playlist._id === res.data.playlist._id);
         //this is the playlist (from state) in which vid needs to be deleted
 
@@ -45,7 +43,6 @@ export default function Playlistpage() {
         } else {
             console.log("Video is not there in this playlist.");
         }
-        console.log("plLIST: ", plLISTS);
         dispatch({ type: "ADD_TO_PLAYLIST", payload: plLISTS });
 
     }
