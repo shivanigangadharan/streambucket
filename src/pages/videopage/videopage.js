@@ -13,7 +13,7 @@ export default function Videopage() {
     const [videos, setVideos] = useState([]);
     const [showAddTo, setShowAddTo] = useState(false);
     const { state, dispatch } = useStateContext();
-    const { user, encodedToken } = useAuth();
+    const { user, setUser, encodedToken } = useAuth();
     const navigate = useNavigate();
 
     const toggleShowAdd = () => {
@@ -72,6 +72,14 @@ export default function Videopage() {
         })
         dispatch({ type: "ADD_TO_LIKES", payload: res.data.likes });
     }
+    const addToWatchLater = async () => {
+        const res = await axios.post("/api/user/watchlater", { video }, {
+            headers: {
+                authorization: encodedToken
+            }
+        });
+        setUser({ ...user, watchlater: res.data.watchlater });
+    }
     return (
         <div className="videopage-container">
             <div className="video-container">
@@ -86,7 +94,7 @@ export default function Videopage() {
                         <div onClick={addToLikes}>
                             <i className="vidpage-icon fa-regular fa-thumbs-up"></i>Like
                         </div>
-                        <div>
+                        <div onClick={addToWatchLater}>
                             <i className="vidpage-icon fa-regular fa-clock"></i> Add to watch later
                         </div>
                         <div onClick={toggleShowAdd} className="add-to-playlist">

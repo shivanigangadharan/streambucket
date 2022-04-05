@@ -31,7 +31,7 @@ export default function Likes() {
                 authorization: encodedToken
             }
         });
-        dispatch({ type: "REMOVE_FROM_HISTORY", payload: res.data.history });
+        dispatch({ type: "REMOVE_FROM_LIKES", payload: res.data.LIKES });
     }
 
     return (
