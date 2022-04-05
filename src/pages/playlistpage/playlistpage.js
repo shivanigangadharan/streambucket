@@ -14,12 +14,9 @@ export default function Playlistpage() {
     const [playlistName, setPlaylistName] = useState();
     const { _id } = useParams();
     useEffect(() => {
-        state.playlists.map(e => {
-            if (e._id === _id) {
-                setVideos(e.videos);
-                setPlaylistName(e.title);
-            }
-        })
+        const playlst = state.playlists.find(e => e._id === _id);
+        setVideos(playlst.videos);
+        setPlaylistName(playlst.title);
     })
     const deleteVideo = async (id) => {
         const res = await axios.delete(`/api/user/playlists/${_id}/${id}`, {
