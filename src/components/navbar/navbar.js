@@ -31,18 +31,20 @@ export default function Navbar() {
                 <Link to="/">
                     <span className="brandname">Stream Bucket</span>
                 </Link>
-                <div className="flex">
-                    <input className="searchbar" type="text" placeholder="Search" />
-                    <i className="search-icon fas fa-search" aria-hidden="true"></i>
-                </div>
                 <div className="nav-options">
                     <span onClick={handleLoginClick}> {loginBtn} </span>
                     <Link to="/watchlater">
                         <i className="nav-icon fa-regular fa-clock">
                         </i>
                     </Link>
+                    <Link to="/likes">
+                        <i className="nav-icon fa-regular fa-thumbs-up"></i>
+                    </Link>
                     <Link to="/playlists">
-                        <i className="fa-regular fa-rectangle-list"></i>
+                        <i className="nav-icon fa-regular fa-rectangle-list"></i>
+                    </Link>
+                    <Link to="/history">
+                        <i className="nav-icon fa-solid fa-clock-rotate-left"></i>
                     </Link>
                 </div>
             </div>

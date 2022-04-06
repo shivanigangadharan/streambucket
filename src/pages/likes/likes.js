@@ -1,53 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import '../videolisting/videolisting.css';
 import Videocard from '../../components/videocard/videocard';
-import './history.css';
+// import './history.css';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
 import { useStateContext } from '../../context/stateContext';
 import { useNavigate } from 'react-router';
 
-export default function History() {
+export default function Likes() {
     const { user, encodedToken } = useAuth();
     const { state, dispatch } = useStateContext();
     const [videos, setVideos] = useState([]);
     const navigate = useNavigate();
     useEffect(async () => {
         if (user) {
-            const res = await axios.get("/api/user/history", {
+            const res = await axios.get("/api/user/likes", {
                 headers: {
                     authorization: encodedToken
                 }
             });
-            setVideos(res.data.history);
+            setVideos(res.data.likes);
         } else {
-            alert("Please login to view history.");
+            alert("Please login to view liked videos.");
             navigate("/login");
         }
     }, [state])
-    const removeFromHistory = async (id) => {
-        const res = await axios.delete(`/api/user/history/${id}`, {
+    const removeFromLikes = async (id) => {
+        const res = await axios.delete(`/api/user/likes/${id}`, {
             headers: {
                 authorization: encodedToken
             }
         });
-        dispatch({ type: "REMOVE_FROM_HISTORY", payload: res.data.history });
+        dispatch({ type: "REMOVE_FROM_LIKES", payload: res.data.likes });
     }
-    const clearHistory = async () => {
-        const res = await axios.delete("/api/user/history/all", {
-            headers: {
-                authorization: encodedToken
-            }
-        })
-        dispatch({ type: "CLEAR_HISTORY", payload: res.data.history });
-    }
+
     return (
         <div className="videolisting-container">
             <div className="history-title">
-                <h1 className="bold"> History </h1>
-                <div>
-                    <button onClick={clearHistory} className="btn clear-history"> Clear full history </button>
-                </div>
+                <h1 className="bold"> Liked videos </h1>
             </div>
             <div className="video-grid">
                 {
@@ -55,7 +45,7 @@ export default function History() {
                         return (
                             <div>
                                 <Videocard video={vid} />
-                                <button onClick={() => removeFromHistory(vid._id)}> Remove from history </button>
+                                <button onClick={() => removeFromLikes(vid._id)}> Remove from likes </button>
                             </div>
                         )
                     })

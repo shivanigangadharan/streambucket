@@ -49,3 +49,6 @@
 .pl-option:hover{
     background: grey;
 }
+.controllers>*{
+    cursor: pointer;
+}

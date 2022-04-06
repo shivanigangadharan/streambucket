@@ -13,8 +13,10 @@ export default function Videopage() {
     const [videos, setVideos] = useState([]);
     const [showAddTo, setShowAddTo] = useState(false);
     const { state, dispatch } = useStateContext();
-    const { user, encodedToken } = useAuth();
+    const { user, setUser, encodedToken } = useAuth();
     const navigate = useNavigate();
+    const [liked, setLiked] = useState();
+    const [inWatchLater, setInWatchLater] = useState();
 
     const toggleShowAdd = () => {
         if (user) {
@@ -22,6 +24,20 @@ export default function Videopage() {
         } else {
             alert("Please login to add to playlist.");
             navigate("/login");
+        }
+    }
+    const toggleLike = () => {
+        if (liked) {
+            removeFromLikes();
+        } else {
+            addToLikes();
+        }
+    }
+    const toggleWatchLater = () => {
+        if (inWatchLater) {
+            removeFromWatchLater();
+        } else {
+            addToWatchLater();
         }
     }
     const handleCreatePlaylist = () => {
@@ -36,7 +52,17 @@ export default function Videopage() {
                 setVideo(e);
             }
         })
-    }, [video])
+        if (state.likes.find(vid => vid._id === _id)) {
+            setLiked(true);
+        } else {
+            setLiked(false);
+        }
+        if (user.watchlater.find(vid => vid._id === _id)) {
+            setInWatchLater(true);
+        } else {
+            setInWatchLater(false);
+        }
+    }, [state, video, user])
     const addToPlaylist = async (e) => {
         const playlistid = e;
         const res = await axios.post(`/api/user/playlists/${playlistid}`, { video }, {
@@ -63,7 +89,48 @@ export default function Videopage() {
             })
         }
         dispatch({ type: "ADD_TO_PLAYLIST", payload: plLISTS });
-
+    }
+    const addToLikes = async () => {
+        if (user) {
+            const res = await axios.post("/api/user/likes", { video }, {
+                headers: {
+                    authorization: encodedToken
+                }
+            })
+            dispatch({ type: "ADD_TO_LIKES", payload: res.data.likes });
+        } else {
+            alert("Please login to add to likes.");
+            navigate("/login");
+        }
+    }
+    const removeFromLikes = async () => {
+        const res = await axios.delete(`/api/user/likes/${_id}`, {
+            headers: {
+                authorization: encodedToken
+            }
+        })
+        dispatch({ type: "REMOVE_FROM_LIKES", payload: res.data.likes });
+    }
+    const addToWatchLater = async () => {
+        if (user) {
+            const res = await axios.post("/api/user/watchlater", { video }, {
+                headers: {
+                    authorization: encodedToken
+                }
+            });
+            setUser({ ...user, watchlater: res.data.watchlater });
+        } else {
+            alert("Please login to add to watchlater.");
+            navigate("/login");
+        }
+    }
+    const removeFromWatchLater = async () => {
+        const res = await axios.delete(`/api/user/watchlater/${_id}`, {
+            headers: {
+                authorization: encodedToken
+            }
+        })
+        setUser({ ...user, watchlater: res.data.watchlater });
     }
     return (
         <div className="videopage-container">
@@ -76,11 +143,23 @@ export default function Videopage() {
                         <div className="details"> {video.views} views | {video.uploaded} </div>
                     </div>
                     <div className="controllers">
-                        <div>
-                            <i className="vidpage-icon fa-regular fa-thumbs-up"></i>Like
+                        <div onClick={toggleLike}>
+                            {
+                                liked ?
+                                    <div><i className="vidpage-icon fa-solid fa-thumbs-up"></i> Liked</div> :
+                                    <div>
+                                        <i className="vidpage-icon fa-regular fa-thumbs-up"></i>Like
+                                    </div>
+                            }
                         </div>
-                        <div>
-                            <i className="vidpage-icon fa-regular fa-clock"></i> Add to watch later
+                        <div onClick={toggleWatchLater}>
+                            {
+                                inWatchLater ?
+                                    <div><i className="vidpage-icon fa-solid fa-circle-check"></i> Added to watch later</div> :
+                                    <div>
+                                        <i className="vidpage-icon fa-regular fa-clock"></i> Add to watch later
+                                    </div>
+                            }
                         </div>
                         <div onClick={toggleShowAdd} className="add-to-playlist">
                             <i className="vidpage-icon fa-regular fa-square-plus"></i>Add to playlist

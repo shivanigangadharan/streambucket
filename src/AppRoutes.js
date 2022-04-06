@@ -10,6 +10,7 @@ import History from "./pages/history/history";
 import Navbar from "./components/navbar/navbar";
 import Playlistpage from "./pages/playlistpage/playlistpage";
 import Mockman from 'mockman-js';
+import Likes from "./pages/likes/likes";
 
 export default function AppRoutes() {
     return (
@@ -23,6 +24,7 @@ export default function AppRoutes() {
             <Route path="/playlists" element={<Playlists />} />
             <Route path="/history" element={<History />} />
             <Route path="/playlistpage/:_id" element={<Playlistpage />} />
+            <Route path="/likes" element={<Likes />} />
             <Route path="/mockman" element={<Mockman />} />
         </Routes>
     )
