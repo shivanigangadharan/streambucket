@@ -8,20 +8,20 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    categoryName: "piano tunes",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "Cherish classical, bollywood and many mores genres played on this evergeen instrument.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    categoryName: "guitar songs",
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+      "From bollywood to western to indie, find all your favourite song covers played on guitar.",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    categoryName: "sitar covers",
     description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "A blend of Indian classical into a variety of songs played on sitar by talented maestros.",
   },
 ];

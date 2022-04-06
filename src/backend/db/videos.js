@@ -14,6 +14,7 @@ export const videos = [
     views: 2300,
     link: "https://www.youtube.com/watch?v=rAIpnU3J7Co",
     uploaded: "Feb 12, 2022",
+    categoryName: "guitar songs",
   },
   {
     _id: "HumZR7NaiFI",
@@ -25,6 +26,7 @@ export const videos = [
     views: 30028,
     link: "https://www.youtube.com/watch?v=HumZR7NaiFI&list=RDGMEMCMFH2exzjBeE_zAHHJOdxg&index=2",
     uploaded: "June 2, 2019",
+    categoryName: "piano tunes",
 
   },
   {
@@ -37,6 +39,7 @@ export const videos = [
     views: 3147,
     link: "https://www.youtube.com/watch?v=V-Z0L3c3mH0",
     uploaded: "May 25, 2021",
+    categoryName: "piano tunes",
   },
   {
     _id: "ccPmI9J6QqM",
@@ -48,5 +51,6 @@ export const videos = [
     views: 13426,
     link: "https://www.youtube.com/watch?v=ccPmI9J6QqM",
     uploaded: "May 5, 2020",
+    categoryName: "sitar covers",
   },
 ];

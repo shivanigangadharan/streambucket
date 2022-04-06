@@ -6,7 +6,8 @@ const initialState = {
     likes: [],
     watchLater: [],
     history: [],
-    showModal: false
+    showModal: false,
+    category: null,
 }
 
 const StateContext = createContext();
