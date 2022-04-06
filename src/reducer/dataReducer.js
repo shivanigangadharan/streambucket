@@ -17,6 +17,10 @@ export const dataReducer = (state, action) => {
             return { ...state, likes: action.payload }
         case "REMOVE_FROM_LIKES":
             return { ...state, likes: action.payload }
+        case "SET_CATEGORY":
+            return { ...state, category: action.payload }
+        case "CLEAR_CATEGORY":
+            return { ...state, category: null }
         case "SHOW_MODAL":
             return { ...state, showModal: true }
         case "HIDE_MODAL":
