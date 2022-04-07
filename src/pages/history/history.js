@@ -50,7 +50,7 @@ export default function History() {
                     <button onClick={clearHistory} className="btn clear-history"> Clear full history </button>
                 </div>
             </div>
-            <div className="video-grid">
+            <div>
                 {videos.length === 0 ?
                     <div>
                         <h3> No videos here! </h3>
@@ -58,7 +58,7 @@ export default function History() {
                             <button className="btn remove-btn"> View all videos </button>
                         </Link>
                     </div> :
-                    <div>
+                    <div className="video-grid">
                         {
                             videos.map((vid) => {
                                 return (
