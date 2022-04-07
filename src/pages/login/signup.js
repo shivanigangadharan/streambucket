@@ -5,6 +5,7 @@ import { useAuth } from '../../context/authContext';
 
 export default function Signup() {
     const navigate = useNavigate();
+    const [pswdType, setPswdType] = useState("password");
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [firstName, setFirstName] = useState();
@@ -38,25 +39,25 @@ export default function Signup() {
                     <h2 className="heading">Sign up</h2>
                     <form>
                         <div className="input-container">
-                            <label className="label">First name</label>
                             <br />
                             <input required onChange={e => setFirstName(e.target.value)} className="text-input" type="text" placeholder="Enter first name" />
                         </div>
                         <div className="input-container">
-                            <label className="label">Last name</label>
                             <br />
                             <input required onChange={e => setLastName(e.target.value)} className="text-input" type="text" placeholder="Enter last name" />
                         </div>
                         <div className="input-container">
-                            <label className="label">Email address</label>
                             <br />
-                            <input required onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="adarshbalika@gmail.com" />
+                            <input required onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="Enter email : adarshbalika@gmail.com" />
                         </div>
                         <div className="input-container">
-                            <label className="label">Password</label>
                             <br />
-                            <input required onChange={e => setPassword(e.target.value)} className="text-input" type="password" placeholder="***********" />
+                            <input required onChange={e => setPassword(e.target.value)} className="text-input" type={pswdType} placeholder="Enter password : ***********" />
+
+                            <div onClick={() => { pswdType === "password" ? setPswdType("text") : setPswdType("password") }} className="show-pswd"> {pswdType === "password" ? "Show password" : "Hide password"} </div>
+
                         </div>
+
                         <div className="remember-me">
                             <div>
                                 <input type="checkbox" required onClick={e => toggleCheck(e)} /> I accept all terms and conditions
