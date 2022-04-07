@@ -29,14 +29,16 @@ export default function Login() {
                 <div className="container-login">
                     <h2 className="heading">Login</h2>
                     <form>
-                        <div>
-                            <br />
-                            <input onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="Enter email : adarshbalika@gmail.com" />
-                        </div>
-                        <div>
-                            <br />
-                            <input onChange={e => setPassword(e.target.value)} className="text-input" type="password" placeholder="Enter password : ***********" />
-                        </div>
+                        <center>
+                            <div>
+                                <br />
+                                <input onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="Enter email : adarshbalika@gmail.com" />
+                            </div>
+                            <div>
+                                <br />
+                                <input onChange={e => setPassword(e.target.value)} className="text-input" type="password" placeholder="Enter password : ***********" />
+                            </div>
+                        </center>
                         <div className="remember-me">
                             <div>
                                 <input type="checkbox" /> Remember me

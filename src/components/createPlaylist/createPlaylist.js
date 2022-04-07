@@ -29,8 +29,10 @@ export default function CreatePlaylist() {
             <center>
                 <div className="modal-container" id="modalBox">
                     <div className="content-modal">
-                        <h1>Create new playlist</h1>
-                        <input onChange={(e) => setPlaylistName(e.target.value)} type="text" placeholder="Enter playlist name" />
+                        <h2 className="title"> Create new playlist</h2>
+                        <center>
+                            <input className="text-input" onChange={(e) => setPlaylistName(e.target.value)} type="text" placeholder="Enter playlist name" />
+                        </center>
                         <div className="options end">
                             <span className="purple" id="action1" onClick={savePlaylist}> Save playlist </span>
                             <span className="purple" id="action2" onClick={() => dispatch({ type: "HIDE_MODAL" })}> Cancel </span>
