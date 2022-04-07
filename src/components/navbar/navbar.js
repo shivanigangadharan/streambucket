@@ -20,6 +20,7 @@ export default function Navbar() {
     const handleLoginClick = () => {
         if (loginBtn == "Logout") {
             setUser(null);
+            localStorage.removeItem("token");
             navigate("/");
         }
         else {
