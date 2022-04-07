@@ -3,30 +3,30 @@
     top: 0;
     left: 0;
     width: 100%;
+    padding: 0.8rem 1.8rem;
     box-sizing: border-box;
+    box-shadow: none;
 }
-.nav-options{
+.navbar-options{
+    display: flex;
     gap: 40px;
     cursor: pointer;
 }
-.nav-options a{
+.nav-icon:hover{
+    color: var(--red);
+    transition-duration: 0.1s;
+}
+.navbar-options>*{
+    font-weight: 500;
     color: var(--darkgrey);
 }
-.searchbar{
-    border: 1px solid var(--lightgrey);
-    border-radius: 4px 0px 0px 4px;
-    font-size: 1rem;
-    padding: 8px 1rem;
-    outline: none;
-    color: var(--grey);
-    width: clamp(200px, 30vw, 400px);
-    position: relative;
+.navbar-options>*:hover{
+    color: var(--red);
 }
-.search-icon{
-    color: var(--grey);
-    font-weight: 200;
-    border: 1px solid var(--lightgrey);
-    border-radius: 0px 4px 4px 0px;
-    padding: 8px 1rem;
-    cursor: pointer;
+.nav-title{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.logo{
+    width: 2rem;
 }

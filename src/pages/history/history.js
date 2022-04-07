@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useAuth } from '../../context/authContext';
 import { useStateContext } from '../../context/stateContext';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function History() {
     const { user, encodedToken } = useAuth();
@@ -50,15 +51,25 @@ export default function History() {
                 </div>
             </div>
             <div className="video-grid">
-                {
-                    videos.map((vid) => {
-                        return (
-                            <div style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
-                                <Videocard video={vid} />
-                                <button className="btn remove-btn" onClick={() => removeFromHistory(vid._id)}> Remove from history </button>
-                            </div>
-                        )
-                    })
+                {videos.length === 0 ?
+                    <div>
+                        <h3> No videos here! </h3>
+                        <Link to="/videolisting">
+                            <button className="btn remove-btn"> View all videos </button>
+                        </Link>
+                    </div> :
+                    <div>
+                        {
+                            videos.map((vid) => {
+                                return (
+                                    <div style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
+                                        <Videocard video={vid} />
+                                        <button className="btn remove-btn" onClick={() => removeFromHistory(vid._id)}> Remove from history </button>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 }
             </div>
         </div>

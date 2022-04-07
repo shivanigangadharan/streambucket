@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../videolisting/videolisting.css';
 import Videocard from '../../components/videocard/videocard';
 import '../history/history.css';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useStateContext } from '../../context/stateContext';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
@@ -47,21 +47,29 @@ export default function Playlistpage() {
         <div className="videolisting-container">
             <div className="history-title">
                 <h1 className="bold"> {playlistName} </h1>
-                <div>
-                    <button className="btn clear-history"> Delete this playlist </button>
-                </div>
             </div>
             <div className="video-grid">
-                {
-                    videos.map(e => {
-                        return (
-                            <div key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
-                                <Videocard video={e} />
-                                <button className="btn remove-btn" onClick={() => deleteVideo(e._id)}> Remove from playlist</button>
-                            </div>
-                        )
-                    })
+                {videos.length === 0 ?
+                    <div>
+                        <h3> No videos here! </h3>
+                        <Link to="/videolisting">
+                            <button className="btn remove-btn"> View all videos </button>
+                        </Link>
+                    </div> :
+                    <div>
+                        {
+                            videos.map(e => {
+                                return (
+                                    <div key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
+                                        <Videocard video={e} />
+                                        <button className="btn remove-btn" onClick={() => deleteVideo(e._id)}> Remove from playlist</button>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 }
+
             </div>
         </div>
     )

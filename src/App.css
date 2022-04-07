@@ -21,7 +21,7 @@
   top: 0;
   left: 0;
   padding-top: 30vh;
-  background: var(--black);
+  background: var(--grey);
   background: var(--black-op);
   position: fixed;
 }

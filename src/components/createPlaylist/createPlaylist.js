@@ -11,7 +11,7 @@ export default function CreatePlaylist() {
     const savePlaylist = async () => {
         try {
             const res = await axios.post("/api/user/playlists", {
-                playlist: { title: playlistName, description: "bar bar bar" }
+                playlist: { title: playlistName }
             }, {
                     headers: {
                         authorization: encodedToken
