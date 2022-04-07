@@ -48,7 +48,7 @@ export default function Playlistpage() {
             <div className="history-title">
                 <h1 className="bold"> {playlistName} </h1>
             </div>
-            <div className="video-grid">
+            <div>
                 {videos.length === 0 ?
                     <div>
                         <h3> No videos here! </h3>
@@ -60,7 +60,7 @@ export default function Playlistpage() {
                         {
                             videos.map(e => {
                                 return (
-                                    <div key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
+                                    <div className="video-grid" key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
                                         <Videocard video={e} />
                                         <button className="btn remove-btn" onClick={() => deleteVideo(e._id)}> Remove from playlist</button>
                                     </div>

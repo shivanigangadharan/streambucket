@@ -40,7 +40,7 @@ export default function Likes() {
             <div className="history-title">
                 <h1 className="bold"> Liked videos </h1>
             </div>
-            <div className="video-grid">
+            <div>
                 {videos.length === 0 ?
                     <div>
                         <h3> No videos here! </h3>
@@ -52,7 +52,7 @@ export default function Likes() {
                         {
                             videos.map((vid) => {
                                 return (
-                                    <div style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
+                                    <div className="video-grid" style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
                                         <Videocard video={vid} />
                                         <button className="btn remove-btn" onClick={() => removeFromLikes(vid._id)}> Remove from likes </button>
                                     </div>

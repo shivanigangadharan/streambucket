@@ -28,7 +28,7 @@ export default function Watchlater() {
     return (
         <div className="videolisting-container">
             <h1 className="bold"> Watch later </h1>
-            <div className="video-grid">
+            <div>
                 {videos.length === 0 ?
                     <div>
                         <h3> No videos here! </h3>
@@ -36,7 +36,7 @@ export default function Watchlater() {
                             <button className="btn remove-btn"> View all videos </button>
                         </Link>
                     </div> :
-                    <div>
+                    <div className="video-grid">
                         {
                             videos.map((video) => {
                                 return <Videocard video={video} />
