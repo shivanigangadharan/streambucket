@@ -55,10 +55,9 @@ export default function Playlistpage() {
                 {
                     videos.map(e => {
                         return (
-                            <div key={e._id}>
+                            <div key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
                                 <Videocard video={e} />
-                                <button onClick={() => deleteVideo(e._id)}> Remove from playlist</button>
-
+                                <button className="btn remove-btn" onClick={() => deleteVideo(e._id)}> Remove from playlist</button>
                             </div>
                         )
                     })

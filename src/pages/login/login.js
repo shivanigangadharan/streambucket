@@ -30,14 +30,12 @@ export default function Login() {
                     <h2 className="heading">Login</h2>
                     <form>
                         <div>
-                            <label className="label">Email address</label>
                             <br />
-                            <input onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="adarshbalika@gmail.com" />
+                            <input onChange={e => setEmail(e.target.value)} className="text-input" type="email" placeholder="Enter email : adarshbalika@gmail.com" />
                         </div>
                         <div>
-                            <label className="label">Password</label>
                             <br />
-                            <input onChange={e => setPassword(e.target.value)} className="text-input" type="password" placeholder="***********" />
+                            <input onChange={e => setPassword(e.target.value)} className="text-input" type="password" placeholder="Enter password : ***********" />
                         </div>
                         <div className="remember-me">
                             <div>

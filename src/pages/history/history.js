@@ -53,9 +53,9 @@ export default function History() {
                 {
                     videos.map((vid) => {
                         return (
-                            <div>
+                            <div style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
                                 <Videocard video={vid} />
-                                <button onClick={() => removeFromHistory(vid._id)}> Remove from history </button>
+                                <button className="btn remove-btn" onClick={() => removeFromHistory(vid._id)}> Remove from history </button>
                             </div>
                         )
                     })

@@ -1,3 +1,15 @@
 .bold{
   font-weight: 700;
 }
+.remove-btn{
+  border: 1px solid var(--red);
+  color: var(--red);
+  background: var(--white);
+  margin-top: 1rem;
+  width: max-content;
+}
+.remove-btn:hover{
+  background: var(--red);
+  color: var(--white);
+  transition-duration: 0.2s;
+}
