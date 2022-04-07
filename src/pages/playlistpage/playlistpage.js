@@ -56,11 +56,11 @@ export default function Playlistpage() {
                             <button className="btn remove-btn"> View all videos </button>
                         </Link>
                     </div> :
-                    <div>
+                    <div className="video-grid">
                         {
                             videos.map(e => {
                                 return (
-                                    <div className="video-grid" key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
+                                    <div key={e._id} style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
                                         <Videocard video={e} />
                                         <button className="btn remove-btn" onClick={() => deleteVideo(e._id)}> Remove from playlist</button>
                                     </div>

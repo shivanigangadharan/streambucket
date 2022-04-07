@@ -48,11 +48,11 @@ export default function Likes() {
                             <button className="btn remove-btn"> View all videos </button>
                         </Link>
                     </div> :
-                    <div>
+                    <div className="video-grid">
                         {
                             videos.map((vid) => {
                                 return (
-                                    <div className="video-grid" style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
+                                    <div style={{ 'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center' }}>
                                         <Videocard video={vid} />
                                         <button className="btn remove-btn" onClick={() => removeFromLikes(vid._id)}> Remove from likes </button>
                                     </div>
