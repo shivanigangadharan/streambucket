@@ -19,6 +19,8 @@ https://streambucket.netlify.app/
     - Login
     - Logout
 
+Guest login credentials - Email : adarshbalika@gmail.com , password : adarshbalika
+
 - ### Homepage
     Has categories based on different types of song videos like piano, guitar or sitar covers. Clicking on any of these will lead you to the video listing page containing videos of only that category.
 
