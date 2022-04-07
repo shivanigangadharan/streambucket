@@ -5,6 +5,30 @@
 
 export const videos = [
   {
+    _id: "DUbmpH5gA7Y",
+    title: "Tune Jo Na Kaha Piano Cover by Melody Cocktails",
+    artist: "Melody Cocktails",
+    description:
+      "Piano cover of Tune Jo Na Kaha song from the film New York. Hope you like it!",
+    imgUrl: "https://i.ytimg.com/vi/DUbmpH5gA7Y/hqdefault.jpg",
+    views: 150,
+    link: "https://www.youtube.com/shorts/DUbmpH5gA7Y",
+    uploaded: "Mar 29, 2022",
+    categoryName: "piano tunes",
+  },
+  {
+    _id: "V-Z0L3c3mH0",
+    title: "De Mauka Zindagi | Instrumental cover",
+    artist: "Melody Cocktails",
+    description:
+      "Presenting the instrumental cover of De Mauka Zindagi from TVF's Aspirants, played using piano and guitar sounds.",
+    imgUrl: "https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+    views: 3147,
+    link: "https://www.youtube.com/watch?v=V-Z0L3c3mH0",
+    uploaded: "May 25, 2021",
+    categoryName: "piano tunes",
+  },
+  {
     _id: "rAIpnU3J7Co",
     title: "Filhal guitar cover",
     description:
@@ -15,6 +39,19 @@ export const videos = [
     link: "https://www.youtube.com/watch?v=rAIpnU3J7Co",
     uploaded: "Feb 12, 2022",
     categoryName: "guitar songs",
+  },
+
+  {
+    _id: "4twsvQvrhvc",
+    title: "Yeh Haseen Vadiyan | Sitar cover ",
+    artist: "Wedding Photocam",
+    description:
+      "Like, Share, Support, Subscribe!!!",
+    imgUrl: "https://images.unsplash.com/photo-1646765495885-8a61595cb9cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    views: 7106795,
+    link: "https://www.youtube.com/watch?v=4twsvQvrhvc",
+    uploaded: "Oct 1, 2017",
+    categoryName: "sitar covers",
   },
   {
     _id: "HumZR7NaiFI",
@@ -30,27 +67,41 @@ export const videos = [
 
   },
   {
-    _id: "V-Z0L3c3mH0",
-    title: "De Mauka Zindagi | Instrumental cover",
-    artist: "Melody Cocktails",
+    _id: "bJkGUX7ulcw",
+    title: "Agar Tum Sath Ho (sitar cover)",
+    artist: "VPASNA",
     description:
-      "Presenting the instrumental cover of De Mauka Zindagi from TVF's Aspirants, played using piano and guitar sounds.",
-    imgUrl: "https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
-    views: 3147,
-    link: "https://www.youtube.com/watch?v=V-Z0L3c3mH0",
-    uploaded: "May 25, 2021",
+      "Presenting sitar cover of Agar Tum Saath Ho by Vpasna, hope you like it.",
+    imgUrl: "https://i.ytimg.com/vi/bJkGUX7ulcw/mqdefault.jpg",
+    views: 10024,
+    link: "https://www.youtube.com/watch?v=bJkGUX7ulcw",
+    uploaded: "Dec 9, 2019",
+    categoryName: "sitar covers",
+  },
+
+  {
+    _id: "Rvez2HCPMc8",
+    title: "DIL KO TUMSE PYAR HUA | PIANO COVER",
+    artist: "THE PIANO STORY",
+    description:
+      "Instagram : https://instagram.com/avikgangs/ Enquiry for live shows - 7980869983",
+    imgUrl: "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    views: 8217,
+    link: "https://www.youtube.com/watch?v=Rvez2HCPMc8",
+    uploaded: "Feb 21, 2020",
     categoryName: "piano tunes",
   },
+
   {
-    _id: "ccPmI9J6QqM",
-    title: "Cheap Thrills - Sitar Cover",
-    artist: "LiveToSeek",
+    _id: "mAZAqoJo4zg",
+    title: "Gajendra Verma - Tera Ghata - Guitar fingerstyle cover",
+    artist: "GROOVE THE STRINGS",
     description:
-      "For all those people who danced or wanted to dance even for once in their lifetimes, this is a small effort to cover up one of the most popular songs of this generation that activated the dancing feet of everyone who listened...",
-    imgUrl: "https://images.unsplash.com/photo-1646765495885-8a61595cb9cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    views: 13426,
-    link: "https://www.youtube.com/watch?v=ccPmI9J6QqM",
-    uploaded: "May 5, 2020",
-    categoryName: "sitar covers",
+      "Arr. and played by Knowledge Quest Song: Tera Ghata Album: From Lost To Found",
+    imgUrl: "https://i.ytimg.com/vi/mAZAqoJo4zg/hqdefault.jpg",
+    views: 27755,
+    link: "https://www.youtube.com/watch?v=mAZAqoJo4zg",
+    uploaded: "Feb 4, 2019",
+    categoryName: "guitar songs",
   },
 ];
